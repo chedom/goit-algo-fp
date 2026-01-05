@@ -6,12 +6,12 @@ def insertion_sort(lst: LinkedList):
     if not head or not head.next:  # 0 or 1 elements in the list
         return lst
 
-    current = head
     head_placeholder = Node()  # serve as a first element
+    current = head
 
     while current:
         next_tmp = current.next  # save the next element
-        # find the last element which is smaller then current 
+        # find the last element which is smaller then current
         prev = head_placeholder
         while prev.next and prev.next.data < current.data:
             prev = prev.next
@@ -19,8 +19,5 @@ def insertion_sort(lst: LinkedList):
         current.next = prev.next
         prev.next = current
         current = next_tmp
-
     # replace the head of the list with the next element of the placeholder
-    result = LinkedList()
-    result = head_placeholder.next
-    return result
+    lst.head = head_placeholder.next

@@ -60,7 +60,7 @@ class LinkedList:
             print(current.data)
             current = current.next
 
-    # implemented according task 1
+    # implemented according subtask 1
     def reverse(self):
         current = self.head
         prev = None

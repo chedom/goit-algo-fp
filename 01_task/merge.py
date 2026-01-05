@@ -1,7 +1,7 @@
 from linked_list import LinkedList, Node
 
 
-def merge(list1: LinkedList, list2: LinkedList) -> LinkedList:
+def merge_ll(list1: LinkedList, list2: LinkedList) -> LinkedList:
     head_placeholder = Node()
     current = head_placeholder
 
@@ -20,5 +20,5 @@ def merge(list1: LinkedList, list2: LinkedList) -> LinkedList:
     current.next = l1 if l1 else l2
     # replace the head of the list with the next element of the placeholder
     result = LinkedList()
-    result = head_placeholder.next
+    result.head = head_placeholder.next
     return result
