@@ -62,21 +62,13 @@ class LinkedList:
 
     # implemented according task 1
     def reverse(self):
-        head = self.head
-        if not head:
-            return
+        current = self.head
+        prev = None
 
-        def recursive_reverse(node: Node | None):
-            if not node.next:  # the last element should become head
-                nonlocal head
-                head = node
-                return
-
-            originial_next = node.next
-            recursive_reverse(originial_next)  # reverse for all next elements
-            originial_next.next = node  # change the reference to the next 
-            node.next = None  # reset next for current node
-
-        recursive_reverse(self.head)
-        # change the head of the linked list
-        self.head = head
+        while current:
+            next_node = current.next  # original next element
+            current.next = prev  # reverse the `next`
+            prev = current
+            current = next_node
+        # the last `prev` becomes the head
+        self.head = prev
