@@ -1,10 +1,26 @@
-def insertion_sort(lst):
-    for i in range(1, len(lst)):
-        key = lst[i]
-        j = i-1
-        while j >= 0 and key < lst[j]:
-                lst[j+1] = lst[j]
-                j -= 1
-        lst[j+1] = key
+from linked_list import LinkedList, Node
 
-    return lst
+
+def insertion_sort(lst: LinkedList):
+    head = lst.head
+    if not head or not head.next:  # 0 or 1 elements in the list
+        return lst
+
+    current = head
+    head_placeholder = Node()  # serve as a first element
+
+    while current:
+        next_tmp = current.next  # save the next element
+        # find the last element which is smaller then current 
+        prev = head_placeholder
+        while prev.next and prev.next.data < current.data:
+            prev = prev.next
+        # insert the current after prev
+        current.next = prev.next
+        prev.next = current
+        current = next_tmp
+
+    # replace the head of the list with the next element of the placeholder
+    result = LinkedList()
+    result = head_placeholder.next
+    return result
