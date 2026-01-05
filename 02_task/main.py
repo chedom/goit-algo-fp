@@ -8,6 +8,14 @@ def pythagoras_tree(t, order, size):
         return
     # each scaled down by a linear factor of √2/2
     new_size = size*(math.sqrt(2)/2)
+    # make leaf green and trunk brown 
+    if order == 1:
+        t.pencolor("green")
+    else:
+        t.pencolor("brown")
+    # the closer to the root the wider trunk
+    t.pensize(order)
+
     # draw trunk
     t.forward(size)
     # draw left branch
@@ -18,6 +26,12 @@ def pythagoras_tree(t, order, size):
     pythagoras_tree(t, order-1, new_size)
     # return to the bottom of the trunk
     t.left(45)
+    # preserve the color
+    if order == 1:
+        t.pencolor("green")
+    else:
+        t.pencolor("brown")
+
     t.backward(size)
 
 
