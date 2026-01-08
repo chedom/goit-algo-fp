@@ -1,7 +1,8 @@
 from greedy_algo import greedy_algorithm
+from dp_programming import dynamic_programming
 
 
-def demo_greedy_algorithm():
+def demo():
     items = {
         "pizza": {"cost": 50, "calories": 300},
         "hamburger": {"cost": 40, "calories": 250},
@@ -11,12 +12,21 @@ def demo_greedy_algorithm():
         "potato": {"cost": 25, "calories": 350}
     }
 
-    selected, total = greedy_algorithm(items, 50)
-    print(f"Total {total} with items {selected}")  # ['cola', 'potato', 'pepsi']
+    print("DP and greedy provide the same results")
+    run_algorithms(items, 50)  # the same result
+    print("Greedy doesnt provide optimal result")
+    run_algorithms(items, 70)  # greedy doesnt provide optimal solution
+
+
+def run_algorithms(items, budget):
+    selected_greedy, total_greedy = greedy_algorithm(items, budget)
+    print(f"Greedy: total: {total_greedy}, selected: {sorted(selected_greedy)}")
+    selected_dp, total_dp = dynamic_programming(items, budget)
+    print(f"DP    : total: {total_dp}, selected: {sorted(selected_dp)}")
 
 
 def main():
-    demo_greedy_algorithm()
+    demo()
 
 
 if __name__ == "__main__":
